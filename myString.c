@@ -24,7 +24,7 @@ void *my_memchr(const void *str, int c, unsigned int n)
     }
     else
     {
-        temp_ptr = str;
+        temp_ptr = (unsigned char *)str;
         while  (0 != n )
         {
             if ((unsigned char)c == *temp_ptr)
@@ -54,8 +54,8 @@ int my_memcmp(const void *str1, const void *str2, unsigned int n)
     }
     else
     {
-        unsigned char *temp_dest = str1;
-        unsigned char *temp_src = str2;
+        unsigned char *temp_dest = (unsigned char *)str1;
+        unsigned char *temp_src = (unsigned char *)str2;
 
         while (0 != n)
         {
@@ -91,7 +91,7 @@ void *my_memcpy(void *dest, const void * src, unsigned int n)
     else
     {
         unsigned char *temp_dest = dest;
-        unsigned char *temp_src = src;
+        unsigned char *temp_src = (unsigned char *)src;
 
         while (0 != n)
         {
@@ -113,8 +113,8 @@ void *my_memmove(void *str1, const void *str2, unsigned int n)
     }
     else
     {
-        unsigned char *temp_str1 = str1;
-        unsigned char *temp_str2 = str2;
+        unsigned char *temp_str1 = (unsigned char *)str1;
+        unsigned char *temp_str2 = (unsigned char *)str2;
 
         while (0 != n)
         {
@@ -157,8 +157,8 @@ char *my_strcat(char *dest, const char *src)
     }
     else
     {
-        unsigned char *temp_dest = dest;
-        unsigned char *temp_src = src;
+        unsigned char *temp_dest = (unsigned char *)dest;
+        unsigned char *temp_src = (unsigned char *)src;
 
         while (*temp_dest != '\0')
         {
@@ -182,8 +182,8 @@ char *my_strncat(char *dest, const char *src, unsigned int n)
     }
     else
     {
-        unsigned char *temp_dest = dest;
-        unsigned char *temp_src = src;
+        unsigned char *temp_dest = (unsigned char *)dest;
+        unsigned char *temp_src = (unsigned char *)src;
 
         while (*temp_dest != '\0')
         {
@@ -209,7 +209,7 @@ char *my_strchr(const char *str, int c)
     }
     else
     {
-        temp_ptr = str;
+        temp_ptr = (char *)str;
         while  (*temp_ptr != '\0')
         {
             if ((unsigned char)c == *temp_ptr)
@@ -238,8 +238,8 @@ int my_strcmp(const char *str1, const char *str2)
     }
     else
     {
-        unsigned char *temp_dest = str1;
-        unsigned char *temp_src = str2;
+        unsigned char *temp_dest = (unsigned char *)str1;
+        unsigned char *temp_src = (unsigned char *)str2;
 
         while (*temp_dest != '\0' || *temp_src != '\0')
         {
@@ -274,8 +274,8 @@ int my_strncmp(const char *str1, const char *str2, unsigned int n)
     }
     else
     {
-        unsigned char *temp_dest = str1;
-        unsigned char *temp_src = str2;
+        unsigned char *temp_dest = (unsigned char *)str1;
+        unsigned char *temp_src = (unsigned char *)str2;
 
         while (0 != n)
         {
@@ -311,8 +311,8 @@ int my_strcoll(const char *str1, const char *str2)
     }
     else
     {
-        unsigned char *temp_dest = str1;
-        unsigned char *temp_src = str2;
+        unsigned char *temp_dest = (unsigned char *)str1;
+        unsigned char *temp_src = (unsigned char *)str2;
 
         while (*temp_dest != '\0' || *temp_src != '\0')
         {
@@ -346,8 +346,8 @@ char *my_strcpy(char *dest, const char *src)
     }
     else
     {
-        unsigned char *temp_dest = dest;
-        unsigned char *temp_src = src;
+        unsigned char *temp_dest = (unsigned char *)dest;
+        unsigned char *temp_src = (unsigned char *)src;
         unsigned char flag = 0;
 
         while (*temp_dest != '\0')
@@ -380,8 +380,8 @@ char *my_strncpy(char *dest, const char *src, unsigned int n)
     }
     else
     {
-        unsigned char *temp_dest = dest;
-        unsigned char *temp_src = src;
+        unsigned char *temp_dest = (unsigned char *)dest;
+        unsigned char *temp_src = (unsigned char *)src;
         unsigned char flag = 0;
 
         while (n != 0)
@@ -422,12 +422,12 @@ signed int my_strcspn(const char *str1, const char *str2)
     }
     else 
     {
-        unsigned char *temp_str1 = str1;
-        unsigned char *temp_str2 = str2;
+        unsigned char *temp_str1 = (unsigned char *)str1;
+        unsigned char *temp_str2 = (unsigned char *)str2;
         unsigned char flag = 0;
         while ('\0' != *temp_str1)
         {
-            temp_str2 = str2;
+            temp_str2 = (unsigned char *)str2;
             while ('\0' != *temp_str2)
             {
                 if (*temp_str1 == *temp_str2)
@@ -471,7 +471,7 @@ char *my_strerror(int errnum)
 
 unsigned int my_strlen(const char *str)
 {
-    unsigned char *temp_str = str;
+    unsigned char *temp_str = (unsigned char *)str;
     unsigned int len = 0;
     if (NULL == *str)
     {
@@ -491,8 +491,8 @@ unsigned int my_strlen(const char *str)
 
 char *my_strpbrk(const char *str1, const char *str2)
 {
-    char *temp_str1 = str1;
-    char *temp_str2 = str2;
+    char *temp_str1 = (char *)str1;
+    char *temp_str2 = (char *)str2;
     if (NULL == *str1 || NULL == *str2)
     {
         printf("invalid due to NULL pointer\n");
@@ -503,7 +503,7 @@ char *my_strpbrk(const char *str1, const char *str2)
         unsigned char flag = 0;
         while ('\0' != *temp_str1)
         {
-            temp_str2 = str2;
+            temp_str2 = (char *)str2;
             while ('\0' != *temp_str2)
             {
                 if (*temp_str1 == *temp_str2)
@@ -539,7 +539,7 @@ char *my_strrchr(const char *str, int c)
     }
     else
     {
-        temp_ptr = str;
+        temp_ptr = (char *)str;
         while  (*temp_ptr != '\0')
         {
             if ((unsigned char)c == *temp_ptr)
@@ -569,8 +569,8 @@ unsigned int my_strspn(const char *str1, const char *str2)
     }
     else
     {
-        temp_str1 = str1;
-        temp_str2 = str2;
+        temp_str1 = (char *)str1;
+        temp_str2 = (char *)str2;
 
         while (*temp_str1 != '\0')
         {
@@ -598,7 +598,7 @@ unsigned int my_strspn(const char *str1, const char *str2)
             else
             {
                 temp_str1++;
-                temp_str2 = str2;
+                temp_str2 = (char *)str2;
             } 
         }
     }
@@ -620,8 +620,8 @@ char *my_strstr(const char *haystack, const char *needle)
     }
     else
     {
-        temp_haystack = haystack;
-        temp_needle = needle;
+        temp_haystack = (char *)haystack;
+        temp_needle = (char *)needle;
 
         while (*temp_haystack != '\0')
         {
@@ -653,7 +653,7 @@ char *my_strstr(const char *haystack, const char *needle)
                 break;
             }            
             temp_haystack++;
-            temp_needle = needle;
+            temp_needle = (char *)needle;
         }
         if(flag == 0)
         {
@@ -671,9 +671,12 @@ char *my_strtok(char *str, const char *delim)
     char flag = 0;
     if(NULL == str)
     {
-        if(*temp_str1 == '\0')
+        if (temp_str1 != NULL)
         {
-            temp_str2 = NULL;
+            if(*temp_str1 == '\0')
+            {
+                temp_str2 = NULL;
+            }
         }
         if (NULL == temp_str2)
         {
@@ -689,7 +692,7 @@ char *my_strtok(char *str, const char *delim)
     {
         temp_str1 = str;
         temp_str2 = str;
-        temp_delim = delim;
+        temp_delim = (char *)delim;
         while (*temp_str1 != '\0')
         {
             while (*temp_delim != '\0')
@@ -727,7 +730,7 @@ char *my_strtok(char *str, const char *delim)
             else
             {
                 temp_str1++;
-                temp_delim = delim;
+                temp_delim = (char *)delim;
             }                  
         }
     }
